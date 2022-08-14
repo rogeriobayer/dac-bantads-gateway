@@ -1,0 +1,31 @@
+{
+  "name": "api-gateway",
+  "version": "1.0.0",
+  "description": "API Gateway do projeto Bantads",
+  "main": "index.js",
+  "dependencies": {
+    "body-parser": "^1.20.0",
+    "cookie-parser": "^1.4.6",
+    "dotenv-safe": "^8.2.0",
+    "express": "^4.18.1",
+    "express-http-proxy": "^1.6.3",
+    "helmet": "^5.1.1",
+    "http": "0.0.1-security",
+    "jsonwebtoken": "^8.5.1",
+    "morgan": "^1.10.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/tomatebg/dac-bantads-gateway.git"
+  },
+  "author": "Rogerio Bayer",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/tomatebg/dac-bantads-gateway/issues"
+  },
+  "homepage": "https://github.com/tomatebg/dac-bantads-gateway#readme"
+}
