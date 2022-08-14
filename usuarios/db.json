@@ -1,0 +1,7 @@
+{
+  "usuarios": [
+    { "id": 1, "nome": "Admin", "senha": "senha", "perfil": "ADMIN" },
+    { "id": 2, "nome": "gerente", "senha": "gerente", "perfil": "GERENTE" },
+    { "id": 3, "nome": "func", "senha": "func", "perfil": "FUNC" }
+  ]
+}

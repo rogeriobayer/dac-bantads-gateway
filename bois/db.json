@@ -1,0 +1,34 @@
+{
+  "bois": [
+    {
+      "boi_id": 1,
+      "boi_nome": "Mimosa",
+      "boi_raca": "Holandesa",
+      "boi_idade": 5
+    },
+    {
+      "boi_id": 2,
+      "boi_nome": "Bruno",
+      "boi_raca": "Holandesa",
+      "boi_idade": 3
+    },
+    {
+      "boi_id": 3,
+      "boi_nome": "Bruna",
+      "boi_raca": "Holandesa",
+      "boi_idade": 2
+    },
+    {
+      "boi_id": 4,
+      "boi_nome": "Michael",
+      "boi_raca": "Holandesa",
+      "boi_idade": 1
+    },
+    {
+      "boi_id": 5,
+      "boi_nome": "Mateus",
+      "boi_raca": "Holandesa",
+      "boi_idade": 0
+    }
+  ]
+}
