@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "API Gateway do projeto Bantads",
   "main": "index.js",
+  "type": "module",
   "dependencies": {
+    "@types/express-http-proxy": "^1.6.3",
     "body-parser": "^1.20.0",
     "cookie-parser": "^1.4.6",
     "dotenv-safe": "^8.2.0",

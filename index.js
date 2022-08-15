@@ -1,13 +1,19 @@
-require("dotenv-safe").config();
-const express = require("express");
+import { config } from "dotenv-safe";
+import express from "express";
+import bodyParser from "body-parser";
+import cookieParser from "cookie-parser";
+import logger from "morgan";
+import helmet from "helmet";
+import httpProxy from "express-http-proxy";
+import http from "http";
+import jwt from "jsonwebtoken";
+
+import * as usersServiceProxy from "./users/requests.js";
+
 const app = express();
-let bodyParser = require("body-parser");
-let cookieParser = require("cookie-parser");
-let logger = require("morgan");
-const helmet = require("helmet");
-const httpProxy = require("express-http-proxy");
-let http = require("http");
-const jwt = require("jsonwebtoken");
+const httpProxyItem = httpProxy
+
+config();
 
 let urlEncodedParser = bodyParser.urlencoded({ extended: false });
 
@@ -18,10 +24,10 @@ app.use(cookieParser());
 
 app.use(bodyParser.urlencoded({ extended: false }));
 
-const usuariosServiceProxy = httpProxy("http://localhost:5000");
-const boisServiceProxy = httpProxy("http://localhost:5001");
 
-const authServiceProxy = httpProxy("http://localhost:5000", {
+const boisServiceProxy = httpProxyItem("http://localhost:5001");
+
+const authServiceProxy = httpProxyItem("http://localhost:5000", {
   proxyReqBodyDecorator: function (bodyContent, originalReq) {
     try {
       let retBody = {};
@@ -81,9 +87,31 @@ app.post("/logout", function (req, res) {
   res.json({ auth: false, token: "null" });
 });
 
-app.get("usuarios", verifyJWT, (req, res, next) => {
-  usuariosServiceProxy(req, res, next);
+app.get("/usuarios", verifyJWT, (req, res, next) => {
+  usersServiceProxy.getAllUsers(req, res, next);
 });
+
+app.get("/usuarios/:id", verifyJWT, (req, res, next) => {
+  req.url = req.originalUrl 
+
+  usersServiceProxy.getUserById(req, res, next);
+});
+
+app.post("/usuarios", verifyJWT, (req, res, next) => {
+  usersServiceProxy.insertUser(req, res, next);
+});
+
+app.put("/usuarios", verifyJWT, (req, res, next) => {
+
+  usersServiceProxy.editUser(req, res, next);
+});
+
+app.delete("/usuarios/:id", verifyJWT, (req, res, next) => {
+  req.url = req.originalUrl 
+
+  usersServiceProxy.deleteUserById(req, res, next);
+});
+
 
 app.get("bois", verifyJWT, (req, res, next) => {
   boisServiceProxy(req, res, next);
